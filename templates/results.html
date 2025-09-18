@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if weather %}
+        <div class="weather-card">
+            <h2>Weather in {{ weather.city }}, {{ weather.country }}</h2>
+            <p><strong>Temperature:</strong> {{ weather.temperature }}°C</p>
+            <p><strong>Feels Like:</strong> {{ weather.feels_like }}°C</p>
+            <p><strong>Difference:</strong> 
+                {% if weather.feels_like_diff > 0 %}
+                    +{{ weather.feels_like_diff }}°C (Feels Warmer)
+                {% elif weather.feels_like_diff < 0 %}
+                    {{ weather.feels_like_diff }}°C (Feels Cooler)
+                {% else %}
+                    0°C (Same as actual temperature)
+                {% endif %}
+            </p>
+            <p><strong>Condition:</strong> {{ weather.description }}</p>
+            <p><strong>Humidity:</strong> {{ weather.humidity }}%</p>
+            <p><strong>Wind Speed:</strong> {{ weather.wind_speed }} m/s</p>
+            <p><strong>Location:</strong> [{{ weather.latitude }}, {{ weather.longitude }}]</p>
+        </div>
+    {% elif cities %}
+        <h2>Select a City</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for city in cities %}
+                    <tr>
+                        <td>{{ city.name }}</td>
+                        <td>{{ city.country }}</td>
+                        <td><a href="{{ url_for('weather', city_id=city.id) }}">View Weather</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
