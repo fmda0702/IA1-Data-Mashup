@@ -1,6 +1,6 @@
 # IA1-Data-Mashup
 
-Project Description:
+# Project Description:
 
 APIs used (with links):
 1. GeoDB Cities API (https://rapidapi.com/wirefreethought/api/geodb-cities)
@@ -73,7 +73,7 @@ feels_like_difference = feels_like - temp = 32.1 - 30.5 = 1.6
 ```
 
 3. The combined data is sent to results.html where it will displayed in a unified view.
-'''
+```
 {
   "city": "Manila",
   "country": "Philippines",
@@ -86,13 +86,13 @@ feels_like_difference = feels_like - temp = 32.1 - 30.5 = 1.6
   "wind_speed": 3.5,
   "feels_like_difference": 1.6
 }
-'''
+```
 
 ## NOTE: Known limitations
 - The APIs have a limit rate.
 - The search is limited to top 5 city matches only.
 
-## AI usage:
+###### AI usage:
 - Used to provide guidance on API integration and structuring the project using Flask.
 - Used to integrate the loading circle in terms of its appearance and functionality (such as when it should only appear).
 - Used to know how to hide API keys when committing project to Github
