@@ -24,7 +24,7 @@ def index():
             "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com"
         }
 
-        params = {"namePrefix": search_term, "limit": 5} 
+        params = {"namePrefix": search_term, "limit": 10} 
         geo_response = requests.get(GEODB_BASE_URL, headers=headers, params=params)
 
         if geo_response.status_code == 429:

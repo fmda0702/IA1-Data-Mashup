@@ -8,7 +8,14 @@ APIs used (with links):
 
 ## How to set up and run locally?
 0. Sign-up in GeoDB Cities API and OpenWeatherMap API to get your unique API key. Do not share this to anyone.
+```
+(how to know API key for GeoDB Cities API)
+Go to the sidebar > Click 'Workspace' > Scroll down to 'My Subscriptions' > Copy the X-RapidAPI-Key > Include it in your .env file.
 
+(how to know API key for OpenWeather Map API)
+Go to your account dropdown > Click 'My API keys' > Click 'API Keys' > Copy the key > Include it in your .env file.
+
+```
 1. Create a virtual environment
 ```
 python -m venv .venv
@@ -70,6 +77,7 @@ example:
 ```
 2.1 There is a computed field, feels_like_difference that shows the difference between the actual temperature and the 'feels like' temperature.
 ```
+example:
 feels_like_difference = feels_like - temp = 32.1 - 30.5 = 1.6
 ```
 
@@ -91,8 +99,9 @@ example:
 ```
 
 ## NOTE: Known limitations
-- The APIs have a limit rate.
-- The search is limited to top 5 city matches only.
+- The APIs have a limit rate. 
+    - GeoDB Cities API & OpenWeather Map API have 1,000 free calls per day. 
+- The search is limited to top 10 city matches only, so if the keyword inputted is very common, there may be results that would not appear on the table.
 
 ###### AI usage:
 - Used to provide guidance on API integration and structuring the project using Flask.
