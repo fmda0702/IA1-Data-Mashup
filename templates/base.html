@@ -5,19 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Finder</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <style>
+
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Weather Finder</h1>
-        <hr>
-        
-        {% block content %}
-        {% endblock %}
-
-        <footer>
-            <p>&copy; 2025 Weather App</p>
-        </footer>
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+        <p>Fetching data, please wait...</p>
     </div>
+
+
+    <div class="container">
+        <div class="card">
+            <h1>Weather Finder</h1>
+            <hr>
+        
+            {% block content %}
+            {% endblock %}
+
+            <footer>
+                <p>Weather Finder by Francheska A.</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        function showLoading(){
+            document.getElementById('loading-overlay').style.display = 'flex';
+        }
+
+        function hideLoading(){
+            document.getElementById('loading-overlay').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
 

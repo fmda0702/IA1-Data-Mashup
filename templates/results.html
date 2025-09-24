@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <button class="back-btn" onclick="history.back()">← Back</button>
     {% if weather %}
         <div class="weather-card">
             <h2>Weather in {{ weather.city }}, {{ weather.country }}</h2>
@@ -21,7 +22,7 @@
             <p><strong>Location:</strong> [{{ weather.latitude }}, {{ weather.longitude }}]</p>
         </div>
     {% elif cities %}
-        <h2>Select a City</h2>
+        <h2>Select City...</h2>
         <table>
             <thead>
                 <tr>
@@ -35,7 +36,7 @@
                     <tr>
                         <td>{{ city.name }}</td>
                         <td>{{ city.country }}</td>
-                        <td><a href="{{ url_for('weather', city_id=city.id) }}">View Weather</a></td>
+                        <td><a href="{{ url_for('weather', city_id=city.id) }}" onclick="showLoading()">View Weather</a></td>
                     </tr>
                 {% endfor %}
             </tbody>

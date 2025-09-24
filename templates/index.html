@@ -3,10 +3,43 @@
 {% block content %}
     {% if error %}
         <div class="error">{{ error }}</div>
+        <button onclick="window.location.reload()">Retry</button>
     {% endif %}
 
-    <form method="POST">
+    <form method="POST" onsubmit="showLoading()">
         <input type="text" name="city" placeholder="Enter city name" required>
         <button type="submit">Search</button>
     </form>
+
+    <div id="loading" style="display:none;">
+        <p>Fetching the data, please wait...</p>
+        <div class="spinner"></div>
+    </div>
+    
+    <style>
+    .spinner {
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 10px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #loading p {
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+        }
+    </script>
 {% endblock %}
