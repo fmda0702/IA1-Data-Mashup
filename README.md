@@ -108,4 +108,5 @@ example:
 - Used to integrate the loading circle in terms of its appearance and functionality (such as when it should only appear).
 - Used to know how to hide API keys when committing project to Github
 - Generate API results to be used as an example.
+- Used to fix retry button function and retaining input even if the city cannot be found in the search bar.
 

@@ -16,8 +16,10 @@ WEATHER_BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    last_search = ""
     if request.method == "POST":
         search_term = request.form.get("city")
+        last_search = search_term
 
         headers = {
             "X-RapidAPI-Key": GEODB_API_KEY,
@@ -28,7 +30,7 @@ def index():
         geo_response = requests.get(GEODB_BASE_URL, headers=headers, params=params)
 
         if geo_response.status_code == 429:
-            return render_template("index.html", error="GeoDB rate limit reached. Please wait and try again.")
+            return render_template("index.html", error="GeoDB rate limit reached. Please wait and try again.",last_search=last_search)
 
         if geo_response.status_code != 200:
             return render_template("index.html", error="Error fetching city data from GeoDB.")
@@ -36,11 +38,11 @@ def index():
         cities = geo_response.json().get("data", [])
 
         if not cities:
-            return render_template("index.html", error="No cities found. Try another search term.")
+            return render_template("index.html", error="No cities found. Try another search term.", last_search=last_search)
 
-        return render_template("results.html", cities=cities)
+        return render_template("results.html", cities=cities, last_search=last_search)
 
-    return render_template("index.html")
+    return render_template("index.html", last_search=last_search)
 
 
 @app.route("/weather/<city_id>")
