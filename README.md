@@ -53,6 +53,7 @@ example:
 ```
 2. The coordinates used as a logical key allows data from both APIs to be merged into a single object in Python. 
 ```
+example:
 {
   "main": {
     "temp": 30.5,
@@ -74,6 +75,7 @@ feels_like_difference = feels_like - temp = 32.1 - 30.5 = 1.6
 
 3. The combined data is sent to results.html where it will displayed in a unified view.
 ```
+example:
 {
   "city": "Manila",
   "country": "Philippines",
